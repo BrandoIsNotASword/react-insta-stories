@@ -91,6 +91,7 @@ export default class Container extends React.Component {
           cta={this.props.cta}
           height={this.height}
           playState={this.state.pause}
+          progress={{counter: this.state.count, completed: this.state.count / ((this.props.stories[this.state.currentId] && this.props.stories[this.state.currentId].duration) || this.defaultInterval)}}
           width={this.width}
           story={this.props.stories[this.state.currentId]}
           loader={this.props.loader}

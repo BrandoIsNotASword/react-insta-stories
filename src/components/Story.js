@@ -9,7 +9,8 @@ export default class Story extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loaded: false
+      loaded: false,
+      isEnd: false
     }
     this.getStoryContent = this.getStoryContent.bind(this)
   }
@@ -73,8 +74,8 @@ export default class Story extends React.Component {
     )
   }
   render() {
+    console.log(this.props.progress)
     let isHeader = typeof this.props.story === 'object' && this.props.story.header
-    console.log(this.props.story)
     return (
       <div style={{...styles.story, width: this.props.width, height: this.props.height}}>
         {this.getStoryContent()}
