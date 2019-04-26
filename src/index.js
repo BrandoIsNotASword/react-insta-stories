@@ -21,35 +21,35 @@ export default class ReactInstaStories extends Component {
   }
 
   pause() {
-    if(this.c) {
+    if (this.c) {
       this.c.pause('pause')
       return true
     } else return false
   }
 
   play() {
-    if(this.c) {
+    if (this.c) {
       this.c.pause('play')
       return true
     } else return false
   }
 
   previous() {
-    if(this.c) {
+    if (this.c) {
       this.c.previous()
       return true
     } else return false
   }
 
   next() {
-    if(this.c) {
+    if (this.c) {
       this.c.next()
       return true
     } else return false
   }
 
   toggleSeeMore(show) {
-    if(this.c) {
+    if (this.c) {
       return this.c.toggleMore(show)
     } else return false
   }
@@ -67,10 +67,15 @@ export default class ReactInstaStories extends Component {
           header={this.props.header}
           cta={this.props.cta}
           storyContentStyles={this.props.storyStyles}
+          loop={this.props.loop}
         />
       </div>
     )
   }
+}
+
+ReactInstaStories.defaultProps = {
+  loop: false
 }
 
 ReactInstaStories.propTypes = {
@@ -81,5 +86,6 @@ ReactInstaStories.propTypes = {
   loader: PropTypes.element,
   header: PropTypes.element,
   cta: PropTypes.object,
-  storyStyles: PropTypes.object
+  storyStyles: PropTypes.object,
+  loop: PropTypes.bool
 }
