@@ -127,7 +127,7 @@ p{
   box-sizing: content-box;
   text-transform: uppercase;
   font-weight: bold;
-  padding: 15px 30px;
+  padding: 15px 50px;
   border-radius: 100px;
   margin-bottom: 30px;
 }
@@ -154,4 +154,9 @@ p{
 
 .seeMoreClose:hover{
   cursor: pointer;
+}
+
+.bookend {
+  background-color: white;
+  height: 100%;
 }

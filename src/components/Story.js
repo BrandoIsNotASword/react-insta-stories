@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import SeeMore from './SeeMore'
+import Bookend from './Bookend'
 import CTAButton from './CTAButton'
 import globalStyle from './../styles.css'
 
@@ -10,7 +11,6 @@ export default class Story extends React.Component {
     super(props)
     this.state = {
       loaded: false,
-      isEnd: false
     }
     this.getStoryContent = this.getStoryContent.bind(this)
   }
@@ -74,7 +74,6 @@ export default class Story extends React.Component {
     )
   }
   render() {
-    console.log(this.props.progress)
     let isHeader = typeof this.props.story === 'object' && this.props.story.header
     return (
       <div style={{...styles.story, width: this.props.width, height: this.props.height}}>
@@ -87,13 +86,17 @@ export default class Story extends React.Component {
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
           <SeeMore action={this.props.action} toggleMore={this.toggleMore} showContent={this.state.showMore} seeMoreContent={this.props.story.seeMore} />
         </div>}
-        <div style={{position: 'absolute', filter: 'drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px)', margin: 'auto', padding: '0 15px', boxSizing: 'border-box', zIndex: 9999, bottom: 150, width: '100%', display: 'flex', flexDirection: 'column'}}>
+        <div style={{position: 'absolute', filter: 'drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px)', margin: 'auto', pointerEvents: 'none', padding: '0 15px', boxSizing: 'border-box', zIndex: 9999, bottom: 150, width: '100%', display: 'flex', flexDirection: 'column'}}>
           <span style={{color: 'white', fontSize: '3em', lineHeight: '50px', fontWeight: 'bold', marginBottom: '15px'}}>{this.props.story.title}</span>
           <span style={{color: 'white', fontSize: '1.5em'}}>{this.props.story.contentText}</span>
         </div>
         {this.props.cta &&
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
           <CTAButton action={this.props.action} text={this.props.cta.text} link={this.props.cta.link} />
+        </div>}
+        {this.props.isStoriesDone &&
+        <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 99999, width: '100%', height: '100%'}}>
+          <Bookend reset={this.props.reset} />
         </div>}
       </div>
     )
@@ -119,9 +122,11 @@ Story.propTypes = {
     PropTypes.object,
     PropTypes.string
   ]),
+  isStoriesDone: PropTypes.bool,
   height: PropTypes.number,
   width: PropTypes.number,
   action: PropTypes.func,
+  reset: PropTypes.func,
   loader: PropTypes.element,
   header: PropTypes.element,
   playState: PropTypes.bool,

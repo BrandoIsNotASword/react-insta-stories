@@ -10,7 +10,8 @@ export default class Container extends React.Component {
       currentId: 0,
       pause: true,
       count: 0,
-      storiesDone: 0
+      storiesDone: 0,
+      isStoriesDone: false,
     }
     this.defaultInterval = this.props.defaultInterval || 4000
     this.width = props.width || 360
@@ -36,12 +37,20 @@ export default class Container extends React.Component {
     } else {
       this.updateNextStoryId()
     }
-  };
+  }
+
+  reset = () => {
+    this.setState({
+      currentId: 0,
+      count: 0,
+      isStoriesDone: false,
+    })
+  }
 
   updateNextStoryIdForLoop = () => {
     this.setState({
       currentId: (this.state.currentId + 1) % this.props.stories.length,
-      count: 0
+      count: this.state.count + 1
     })
   }
 
@@ -49,8 +58,10 @@ export default class Container extends React.Component {
     if (this.state.currentId < this.props.stories.length - 1) {
       this.setState({
         currentId: this.state.currentId + 1,
-        count: 0
+        count: this.state.count + 1
       })
+    } else {
+      this.setState({ isStoriesDone: true })
     }
   }
 
@@ -98,11 +109,12 @@ export default class Container extends React.Component {
         <Story
           ref={s => this.story = s}
           action={this.pause}
+          reset={this.reset}
           bufferAction={this.state.bufferAction}
           cta={this.props.cta}
           height={this.height}
+          isStoriesDone={this.state.isStoriesDone}
           playState={this.state.pause}
-          progress={{counter: this.state.count, completed: this.state.count / ((this.props.stories[this.state.currentId] && this.props.stories[this.state.currentId].duration) || this.defaultInterval)}}
           width={this.width}
           story={this.props.stories[this.state.currentId]}
           loader={this.props.loader}
