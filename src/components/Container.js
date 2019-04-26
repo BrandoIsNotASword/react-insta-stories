@@ -88,6 +88,7 @@ export default class Container extends React.Component {
           ref={s => this.story = s}
           action={this.pause}
           bufferAction={this.state.bufferAction}
+          cta={this.props.cta}
           height={this.height}
           playState={this.state.pause}
           width={this.width}
@@ -132,5 +133,6 @@ Container.propTypes = {
   height: PropTypes.number,
   loader: PropTypes.element,
   header: PropTypes.element,
+  cta: PropTypes.object,
   storyContentStyles: PropTypes.object
 }

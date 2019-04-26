@@ -10,6 +10,7 @@ export default class ReactInstaStories extends Component {
     this.previous = this.previous.bind(this)
     this.next = this.next.bind(this)
   }
+
   componentDidMount() {
     this.props.stories.map(s => {
       let i = new Image()
@@ -64,6 +65,7 @@ export default class ReactInstaStories extends Component {
           height={this.props.height}
           loader={this.props.loader}
           header={this.props.header}
+          cta={this.props.cta}
           storyContentStyles={this.props.storyStyles}
         />
       </div>
@@ -78,5 +80,6 @@ ReactInstaStories.propTypes = {
   height: PropTypes.number,
   loader: PropTypes.element,
   header: PropTypes.element,
+  cta: PropTypes.object,
   storyStyles: PropTypes.object
 }

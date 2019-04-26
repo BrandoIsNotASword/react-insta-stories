@@ -121,6 +121,17 @@ p{
   width: 5vh;
 }
 
+.seemoreButton {
+  background-color: white;
+  color: black;
+  box-sizing: content-box;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 15px 30px;
+  border-radius: 100px;
+  margin-bottom: 30px;
+}
+
 .seeMoreExpanded {
   position: fixed;
   top: 0;

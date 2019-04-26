@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import SeeMore from './SeeMore'
+import CTAButton from './CTAButton'
 import globalStyle from './../styles.css'
 
 export default class Story extends React.Component {
@@ -73,6 +74,7 @@ export default class Story extends React.Component {
   }
   render() {
     let isHeader = typeof this.props.story === 'object' && this.props.story.header
+    console.log(this.props.story)
     return (
       <div style={{...styles.story, width: this.props.width, height: this.props.height}}>
         {this.getStoryContent()}
@@ -83,6 +85,14 @@ export default class Story extends React.Component {
         {this.props.story.seeMore &&
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
           <SeeMore action={this.props.action} toggleMore={this.toggleMore} showContent={this.state.showMore} seeMoreContent={this.props.story.seeMore} />
+        </div>}
+        <div style={{position: 'absolute', filter: 'drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px)', margin: 'auto', padding: '0 15px', boxSizing: 'border-box', zIndex: 9999, bottom: 150, width: '100%', display: 'flex', flexDirection: 'column'}}>
+          <span style={{color: 'white', fontSize: '3em', lineHeight: '50px', fontWeight: 'bold', marginBottom: '15px'}}>{this.props.story.title}</span>
+          <span style={{color: 'white', fontSize: '1.5em'}}>{this.props.story.contentText}</span>
+        </div>
+        {this.props.cta &&
+        <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
+          <CTAButton action={this.props.action} text={this.props.cta.text} link={this.props.cta.link} />
         </div>}
       </div>
     )
@@ -116,5 +126,6 @@ Story.propTypes = {
   playState: PropTypes.bool,
   getVideoDuration: PropTypes.func,
   bufferAction: PropTypes.bool,
+  cta: PropTypes.cta,
   storyContentStyles: PropTypes.object
 }

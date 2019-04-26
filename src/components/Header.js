@@ -21,6 +21,7 @@ const styles = {
     height: 40,
     borderRadius: 40,
     marginRight: 10,
+    backgroundColor: 'white',
     filter: 'drop-shadow(0 0px 2px rgba(0, 0, 0, 0.5))',
     border: '2px solid rgba(255, 255, 255, 0.8)'
   },
