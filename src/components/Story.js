@@ -96,7 +96,7 @@ export default class Story extends React.Component {
         </div>}
         {this.props.isStoriesDone &&
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 99999, width: '100%', height: '100%'}}>
-          <Bookend reset={this.props.reset} />
+          <Bookend reset={this.props.reset} link={this.props.cta.link} />
         </div>}
       </div>
     )
