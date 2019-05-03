@@ -67,7 +67,7 @@ export default class Story extends React.Component {
     let type = this.props.story.type === 'video' ? 'video' : 'image'    
     return (
       type === 'image' ? <img
-          style={storyContentStyles}
+          style={{...storyContentStyles, width: '100%', height: '100%', objectFit: 'cover'}}
           src={source}
           onLoad={this.imageLoaded}
         /> : (type === 'video' ? <video ref={r => { this.vid = r }} style={storyContentStyles} src={source} controls={false} onLoadedData={this.videoLoaded} autoPlay /> : null)
@@ -86,9 +86,9 @@ export default class Story extends React.Component {
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
           <SeeMore action={this.props.action} toggleMore={this.toggleMore} showContent={this.state.showMore} seeMoreContent={this.props.story.seeMore} />
         </div>}
-        <div style={{position: 'absolute', filter: 'drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px)', margin: 'auto', pointerEvents: 'none', padding: '0 15px', boxSizing: 'border-box', zIndex: 9999, bottom: 150, width: '100%', display: 'flex', flexDirection: 'column'}}>
-          <span style={{color: 'white', fontSize: '3em', lineHeight: '50px', fontWeight: 'bold', marginBottom: '15px'}}>{this.props.story.title}</span>
-          <span style={{color: 'white', fontSize: '1.5em'}}>{this.props.story.contentText}</span>
+        <div style={{position: 'absolute', filter: 'drop-shadow(rgba(0, 0, 0, 0.9) 0px 0px 3px)', margin: 'auto', pointerEvents: 'none', padding: '0 15px', boxSizing: 'border-box', zIndex: 9999, bottom: 125, width: '100%', display: 'flex', flexDirection: 'column'}}>
+          <span className={globalStyle.storyTitle}>{this.props.story.title}</span>
+          <span className={globalStyle.storyContent}>{this.props.story.contentText}</span>
         </div>
         {this.props.cta &&
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>
