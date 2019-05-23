@@ -61,6 +61,7 @@ export default class Story extends React.Component {
       console.log(e)
     }
   }
+
   getStoryContent() {
     let source = typeof this.props.story === 'object' ? this.props.story.url : this.props.story
     let storyContentStyles = this.props.story.styles || this.props.storyContentStyles || styles.storyContent
@@ -81,6 +82,7 @@ export default class Story extends React.Component {
         {isHeader && <div style={{position: 'absolute', left: 12, top: 20, zIndex: 19}}>
           {this.props.header ? () => this.props.header(this.props.story.header) : <Header heading={this.props.story.header.heading} subheading={this.props.story.header.subheading} profileImage={this.props.story.header.profileImage} />}
         </div>}
+        <div style={{background: 'linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0), rgba(0,0,0,0.7))', width: '100%', height: '100%', position: 'absolute'}} />
         {!this.state.loaded && <div style={{width: this.props.width, height: this.props.height, position: 'absolute', left: 0, top: 0, background: 'rgba(0, 0, 0, 0.9)', zIndex: 9, display: 'flex', justifyContent: 'center', alignItems: 'center', color: '#ccc'}}>{this.props.loader || <div className={globalStyle.spinner} />}</div>}
         {this.props.story.seeMore &&
         <div style={{position: 'absolute', margin: 'auto', bottom: 0, zIndex: 9999, width: '100%'}}>

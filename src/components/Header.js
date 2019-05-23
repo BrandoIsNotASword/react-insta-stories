@@ -28,7 +28,7 @@ const styles = {
   text: {
     display: 'flex',
     flexDirection: 'column',
-    filter: 'drop-shadow(0 0px 3px rgba(0, 0, 0, 0.9))'
+    filter: 'drop-shadow(0 0px 2px rgba(0, 0, 0, 1))'
   },
   heading: {
     fontSize: '1rem',

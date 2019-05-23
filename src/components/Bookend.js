@@ -6,7 +6,7 @@ export default function bookend(props) {
   return (
     <div className={style.bookend}>
       <span className={style.bookendTitle}>Get the best rate</span>
-      <span className={style.bookendContentText}>Get the best rate in the market by booking in our web page!</span>
+      <span className={style.bookendContentText}>Book now and get the lowest rate on the market guaranteed!</span>
       <div onClick={() => {
         window.location.replace(props.link)
       }}>
